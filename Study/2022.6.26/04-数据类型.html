@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var num = 10;
+        // js变量类型在运行过程中确定
+        /**
+         * 简单数据类型
+         * Number   数字型
+         * Boolean  布尔型
+         * String   字符串型
+         */
+        var num = 10;
+        var num1 = 010;  //  数字前面加0是八进制
+        console.log(num1);
+        var num3 = 0xf; //  数字前面加上0x就是十六进制
+        console.log(num3);
+        // 数字型的最大值,最小值
+        console.log(Number.MAX_VALUE);
+        console.log(Number.MIN_VALUE);
+        // 无穷大
+        console.log(Number.MAX_VALUE * 2);
+        console.log(-Number.MAX_VALUE * 2);
+        // 非数字
+        console.log('张三' - 1);
+        // 判断是否为非数字
+        console.log(isNaN(12));
+        console.log(isNaN('张三'));
+
+        /* String类型 */
+        var str = '我是\n"张三"';
+        console.log(str);
+        console.log(str.length);
+        var str1 = 'Hello';
+        var str2 = 'World';
+        str1 = str1.concat(' '+str2);
+        console.log(str1);
+
+        /* Boolean类型 */
+        var flag = true;
+        var flag1 = false;
+        console.log(flag+flag1);
+        var un;
+        var nu = null;
+        console.log(un+1);  // undefined+数字为NaN
+        console.log(nu+1);  // null+数字为数字
+        /* 检测数据类型 */
+        console.log(typeof un);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
