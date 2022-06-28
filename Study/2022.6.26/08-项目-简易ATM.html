@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        var money = 0;
+        var flag = true;
+        while (flag) {
+            var operation = prompt("请输入您要的操作:\n1.存钱\n2.取钱\n3.显示余额\n4.退出");
+            switch (Number(operation)) {
+                case 1:
+                    var put = Number(prompt("请输入要存入的金额："));
+                    if (put > 0) {
+                        money += put;
+                        alert("存钱成功");
+                    } else {
+                        alert("输入金额有误！");
+                    }
+                    break;
+                case 2:
+                    var take = Number(prompt("请输入要存入的金额"));
+                    if (take > 0 && take <= money) {
+                        money -= take;
+                        alert("取钱成功！");
+                    } else {
+                        alert("输入金额有误");
+                    }
+                    break;
+                case 3:
+                    alert("当前存款为：" + money);
+                    break;
+                case 4:
+                    alert("退出成功");
+                    flag = false;
+                    break;
+
+                default:
+                    alert("输入内容有误！");
+                    break;
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
