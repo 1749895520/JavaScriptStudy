@@ -1,15 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        
+        {
+            let sy = Symbol('kk');
+            console.log(sy);
+            console.log(typeof (sy));
+            let sy1 = Symbol('kk');
+            console.log(sy == sy1);   //  返回值不同，表示是唯一的
+        }
+        console.log('\n');
+        /* 用法 */
+        {
+            let sy = Symbol('key1');
+            /* 写法1 */
+            {
+                let syObject = {};
+                syObject[sy] = 'kk';
+                console.log(syObject);
+            }
+            console.log('\n');
+            /* 写法2 */
+            {
+                let syObject = {
+                    [sy]: 'kk'
+                };
+                console.log(syObject);
+            }
+            console.log('\n');
+            /* 写法3 */
+            {
+                let syObject = {};
+                Object.defineProperty(syObject, sy, { value: 'kk' });
+                console.log(syObject);
+            }
+            console.log('\n');
+            /* 注意点 */
+            {
+                let syObject = {};
+                syObject[sy] = 'kk';
+                console.log(syObject);
+
+                for (let i in syObject) {
+                    console.log(i);
+                }
+                console.log(Object.keys(syObject)); //  取不到值
+                /* 用以下方法可以取到值 */
+                console.log(Object.getOwnPropertySymbols(syObject));
+                console.log(Reflect.ownKeys(syObject));
+            }
+        }
+        console.log('\n');
+        /* Symbol单例模式 */
+        let yellow = Symbol('yellow');
+        let yellow1 = Symbol.for('yellow');
+        let yellow2 = Symbol.for('yellow');
+        console.log(yellow == yellow1);   //  false
+        console.log(yellow1 == yellow2);  //  true
+        console.log('\n');
+        /* keyFor()检测该key是否被记录 */
+        let yellow3 = Symbol.for('yellow');
+        console.log(Symbol.keyFor(yellow3));
     </script>
 </head>
+
 <body>
-    
+
 </body>
+
 </html>
