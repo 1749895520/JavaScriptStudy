@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 利用字面量创建对象 */
+        /*         var obj = {
+                    uname: '张三',
+                    age: 18,
+                    sex: '男',
+                    sayHi: function() {
+                        console.log('hi~');
+                    }
+                }; */
+        /* 利用 new object创建对象 */
+        /*         var obj = new Object();
+                obj.uname = '李四';
+                obj.age = 19;
+                obj.sex = '女';
+                obj.sayHi = function() {
+                    console.log('hi~');
+                } */
+        /* 利用构造函数创建对象 */
+        function People(uname, age, sex) {
+            this.uname = uname;
+            this.age = age;
+            this.sex = sex;
+            this.sayHi = function() {
+                console.log('hi~');
+            }
+        }
+        var obj = new People('张三',18,'男');
+        console.log(typeof obj);
+        /* 利用键值对的方式访问 */
+        console.log(obj.uname);
+        /* 利用中括号访问 */
+        console.log(obj['age']);
+        /* 调用对象的方法 */
+        obj.sayHi();
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

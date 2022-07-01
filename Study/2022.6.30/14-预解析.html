@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* one */
+        // console.log(num);   /* 报错 */
+        /* two */
+        console.log(num);   /* undefine */
+        var num = 1;    /* 预解析 */
+        /* 
+            预解析会先把js中所有的var和function提升到当前作用域前。
+            预解析分为变量预解析（变量提升）和函数预解析（函数提升）。
+            且预解析只提升声明，不提升赋值。
+        */
+        /* three */
+        fn();   /* 输出1 */
+        function fn() {
+            console.log(1);
+        }
+        fun();  /* 报错 */
+        var fun = function(){
+            console.log(2);
+        };
+        /* four */
+        var n = 10;
+        f();
+        function f() {
+            console.log(n);
+            var n = 20;
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

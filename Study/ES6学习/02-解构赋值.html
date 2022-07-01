@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width='device-width', initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function print() {
+            for (let i = 0; i < arguments.length; i++) {
+                console.log(arguments[i]);
+            }
+            console.log('\n');
+        }
+        /* 数组模型的解构赋值 */
+        /* 基本 */
+        {
+            let [a, b, c] = [1, 2, 3];
+            print(a, b, c);
+        }
+        /* 可嵌套 */
+        {
+            let [a, [[b], c]] = [1, [[2], 3]];
+            print(a, b, c);
+        }
+        /* 可忽略 */
+        {
+            let [a, , b] = [1, 2, 3];
+            print(a, b);
+        }
+        /* 不完全解构 */
+        {
+            let [a = 1, b] = [];
+            print(a, b);
+        }
+        /* 剩余运算符 */
+        {
+            let [a, ...b] = [1, 2, 3];
+            print(a, b);
+        }
+        /* 字符串等 */
+        {
+            let [a, b, c, d, e] = 'hello';
+            print(a, b, c, d, e);
+        }
+        /* 解析默认值 */
+        {
+            let [a = 2] = [undefined];
+            print(a);
+            [a = 3, b = a] = [];
+            print(a, b);
+            [a = 3, b = a] = [1];
+            print(a, b);
+            [a = 3, b = a] = [1, 2];
+            print(a, b);
+        }
+        /* 对象模型的解构 */
+        /* 基本 */
+        {
+            let { foo, bar } = { foo: 'aaa', bar: 'bbb' };
+            print(foo, bar);
+        }
+        /* 可嵌套可忽略 */
+        {
+            let obj = { p: ['hello', { y: 'world' }] };
+            let { p: [x, { y }] } = obj;
+            print(x, y);
+        }
+        /* 不完全解构 */
+        {
+            let obj = { p: [{ y: 'world' }] };
+            let { p: [{ y }, x] } = obj;
+            print(x, y);
+        }
+        /* 剩余运算符 */
+        {
+            let { a, b, ...rest } = { a: 10, b: 20, c: 30, d: 40 };
+            print(a, b, rest);
+        }
+        /* 解构默认值 */
+        {
+            let { a = 10, b = 5 } = { a: 3 };
+            print(a, b);
+            let { a: aa = 10, b: bb = 5 } = { a: 3 };
+            print(a, b);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

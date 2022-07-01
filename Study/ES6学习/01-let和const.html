@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // var a = 2;
+        // /* 内置代码块 */
+        // {
+        //     let a = 3;
+        //     let b = 2;
+        //     document.write(a);
+        // }
+        // document.write('<br>' + a);
+        // document.write('<br>' + b);
+        for(var i=0;i<10;i++) {
+            setTimeout(function() {
+                console.log(i);
+            })
+        }
+        for(let j=0;j<10;j++) {
+            setTimeout(function() {
+                console.log(j);
+            })
+        }
+        /* let没有变量提升 */
+        /* console.log(a);
+        let a = 'apple';
+        console.log(b);
+        var b = 'banana'; */
+
+        /* const用来声明只读变量，只允许初始化 */
+        const PI = '3.1415926';
+        // PI = 1; //  会报错
+        console.log(PI);
+        var a = 'a';
+        if(true) {
+            console.log(a);
+            const a = 'A';
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
