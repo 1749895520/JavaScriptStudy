@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function print(mySet) {
+            for (let set of mySet) {
+                console.log(set);
+            }
+        }
+        let a = new Set([1, 2, 3]);
+        let b = new Set([4, 3, 2]);
+        /* 数组去重 */
+        {
+            let mySet = new Set([1, 2, 3, 4, 4]);
+            let myArray = [...mySet];
+            print(myArray);
+        }
+        console.log('\n');
+        /* 并集 */
+        {
+            let union = new Set([...a, ...b]);
+            print(union);
+        }
+        console.log('\n');
+        /* 交集 */
+        {
+            let intersect = new Set([...a].filter(x => b.has(x)));
+            print(intersect);
+        }
+        console.log('\n');
+        /* 差集 */
+        {
+            let difference = new Set([...a].filter(x => !b.has(x)));
+            print(difference);
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

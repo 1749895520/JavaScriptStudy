@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* Map中的Key */
+        /* key是字符串 */
+        {
+            let myMap = new Map();
+            let keyString = 'a String';
+            myMap.set(keyString, 'aa');
+            console.log(myMap.get(keyString));
+            console.log(myMap.get('a String'));
+        }
+        /* key是对象 */
+        {
+            let myMap = new Map();
+            let keyObj = {};
+            myMap.set(keyObj, 'aa');
+            console.log(myMap.get(keyObj));
+            console.log(myMap.get({})); //  undefined
+        }
+        /* key是函数 */
+        {
+            let myMap = new Map();
+            let keyFunc = function () { };
+            myMap.set(keyFunc, 'aa');
+            console.log(myMap.get(keyFunc));
+            console.log(myMap.get(function () { }));
+        }
+        /* key是NaN */
+        {
+            let myMap = new Map();
+            myMap.set(NaN, 'aa');
+            console.log(myMap.get(NaN));
+            let otherNaN = Number('foo');
+            console.log(myMap.get(otherNaN));
+        }
+        /* Map的迭代 */
+        {
+            let myMap = new Map();
+            myMap.set(0, 'zero');
+            myMap.set(1, 'one');
+            for (let [key, value] of myMap) {
+                console.log(key + ' = ' + value);
+            }
+            myMap.forEach(function (value, key) {
+                console.log(key + ' = ' + value);
+            }, myMap);
+        }
+        /* Map和Array的转换 */
+        {
+            let kvArray = [['key1', 'value1'], ['key2', 'value2']];
+            let myMap = new Map(kvArray);
+            for (let map of myMap) {
+                console.log(map);
+            }
+            let outArray = Array.from(myMap);
+            for (let array of outArray) {
+                console.log(array);
+            }
+        }
+        /* Map的合并 */
+        {
+            let first = new Map([[1, 'one'], [2, 'two'], [3, 'three'],]);
+            let second = new Map([[1, 'uno'], [2, 'dos']]);
+            let merged = new Map([...first, ...second]);
+            for (let map of merged) {
+                console.log(map);   //  有重复的值会覆盖
+            }
+        }
+        /* Set */
+        /* Set中的特殊值 */
+        {
+            let mySet = new Set();
+
+            mySet.add(1); // Set(1) {1}
+            mySet.add(5); // Set(2) {1, 5}
+            mySet.add(5); // Set(2) {1, 5} 这里体现了值的唯一性
+            mySet.add("some text");
+            // Set(3) {1, 5, "some text"} 这里体现了类型的多样性
+            var o = { a: 1, b: 2 };
+            mySet.add(o);
+            mySet.add({ a: 1, b: 2 });
+            // Set(5) {1, 5, "some text", {…}, {…}} 
+            // 这里体现了对象之间引用不同不恒等，即使值相同，Set 也能存储
+            for(let set of mySet) {
+                console.log(set);
+            }
+        }
+        /* 类型转换 */
+        {
+            let mySet = new Set(['value1','value2','value3']);
+            let myArray = [...mySet];   //  通过[...]来转换
+            for(let num of myArray) {
+                console.log(num);
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

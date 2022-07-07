@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* Proxy */
+        {
+            let target = {
+                name: 'Tom',
+                age: 18
+            }
+            let handler = {
+                get: function (target, key) {
+                    console.log('getting ' + key);
+                    return target[key];
+                },
+                set: function (target, key, value) {
+                    console.log('setting ' + key);
+                    target[key] = value;
+                }
+            }
+            let proxy = new Proxy(target, handler);
+            console.log(proxy.name);     //  实际执行 handler.get
+            proxy.age = 25; //  实际执行 handler.set
+
+            let targetEpt = {};
+            let proxyEpt = new Proxy(targetEpt, handler);
+            console.log(proxyEpt.name);
+            proxyEpt.name = '李四';
+            console.log(proxyEpt.name);
+
+            let handlerEpt = new Proxy(targetEpt, {});
+            handlerEpt.name = 'Tom';
+            console.log(handlerEpt.name);
+        }
+        console.log('\n');
+        {
+            let exam = {
+                name: 'Tom',
+                age: 18
+            }
+            let proxy = new Proxy(exam, {
+                get(target, propKey) {
+                    console.log('Getting ' + propKey);
+                    return target[propKey];
+                }
+            });
+            proxy.name;
+        }
+        console.log('\n');
+        {
+            let validator = {
+                set: function(obj,prop,value) {
+                    if(prop === 'age') {
+                        if(!Number.isInteger(value)) {
+                            throw new TypeError('The age is not an integer');
+                        }
+                        if(value > 200) {
+                            throw new RangeError('The age seems invalid');
+                        }
+                    }
+                    obj[prop] = value;
+                }
+            };
+            let proxy = new Proxy({},validator);
+            proxy.age = 100;
+            console.log(proxy.age);
+            // proxy.age = 'op';    //  报错
+            // proxy.age = 300;     //  报错
+        }
+        console.log('\n');
+        /* apply()用于拦截函数的调用 */
+        {
+            function sub(a,b) {
+                return a - b;
+            }
+            let handler = {
+                apply: function(target,ctx,args) {
+                    console.log('handle apply');
+                    return Reflect.apply(...arguments);
+                }
+            }
+            let proxy = new Proxy(sub,handler);
+            console.log(proxy(2,1));
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
